@@ -6,64 +6,25 @@
   <title>Love Calculator 💘</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Your existing styles remain unchanged */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #ffc1cc, #ffe4e1);
-      text-align: center;
-      padding: 6vh 5vw;
-      color: #880e4f;
-      overflow-x: hidden;
-    }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(to right, #ffc1cc, #ffe4e1); text-align: center; padding: 6vh 5vw; color: #880e4f; overflow-x: hidden; }
     h1 { font-size: 2.5em; color: #ad1457; margin-bottom: 10px; text-shadow: 1px 1px 2px #fff; }
     p { font-size: 1.2em; margin-bottom: 30px; color: #6a1b9a; }
-    input {
-      padding: 15px; width: 90%; max-width: 320px; margin: 12px auto;
-      border-radius: 30px; border: 1px solid #f48fb1; font-size: 1em;
-      outline: none; background-color: #fff0f5; box-shadow: inset 0 0 5px #f8bbd0;
-      display: block;
-    }
+    input { padding: 15px; width: 90%; max-width: 320px; margin: 12px auto; border-radius: 30px; border: 1px solid #f48fb1; font-size: 1em; outline: none; background-color: #fff0f5; box-shadow: inset 0 0 5px #f8bbd0; display: block; }
     input:focus { border-color: #ec407a; box-shadow: 0 0 8px #f06292; }
-    button {
-      padding: 14px 30px; font-size: 1.1em; background: #ec407a; color: white;
-      border: none; border-radius: 30px; cursor: pointer; width: 90%; max-width: 340px;
-      margin-top: 20px; transition: background 0.3s ease;
-      box-shadow: 0 4px 10px rgba(236, 64, 122, 0.4);
-    }
+    button { padding: 14px 30px; font-size: 1.1em; background: #ec407a; color: white; border: none; border-radius: 30px; cursor: pointer; width: 90%; max-width: 340px; margin-top: 20px; transition: background 0.3s ease; box-shadow: 0 4px 10px rgba(236, 64, 122, 0.4); }
     button:hover { background: #d81b60; }
-    #result {
-      margin-top: 30px; font-size: 1.6em; font-weight: bold; color: #880e4f;
-      min-height: 60px; padding: 10px;
-    }
-    .celebration {
-      font-size: 2em; color: #c2185b; animation: pop 0.5s ease-in-out;
-      text-shadow: 2px 2px 5px #ff80ab;
-    }
+    #result { margin-top: 30px; font-size: 1.6em; font-weight: bold; color: #880e4f; min-height: 60px; padding: 10px; }
+    .celebration { font-size: 2em; color: #c2185b; animation: pop 0.5s ease-in-out; text-shadow: 2px 2px 5px #ff80ab; }
     @keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-    #hearts {
-      position: fixed; top: 0; left: 0; pointer-events: none; width: 100%; height: 100%; z-index: -1;
-    }
-    .heart {
-      position: absolute; color: #ff6f91; animation: float 6s linear infinite;
-      font-size: 20px; opacity: 0.6; user-select: none; pointer-events: none;
-    }
-    @keyframes float {
-      0% { transform: translateY(100vh) scale(1); opacity: 0; }
-      100% { transform: translateY(-10vh) scale(1.5); opacity: 1; }
-    }
+    #hearts { position: fixed; top: 0; left: 0; pointer-events: none; width: 100%; height: 100%; z-index: -1; }
+    .heart { position: absolute; color: #ff6f91; animation: float 6s linear infinite; font-size: 20px; opacity: 0.6; user-select: none; pointer-events: none; }
+    @keyframes float { 0% { transform: translateY(100vh) scale(1); opacity: 0; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 1; } }
     #controls { margin-top: 20px; }
-    .music-btn, .try-again-btn, .share-btn {
-      background-color: #f06292; margin: 10px auto; display: block;
-      padding: 10px 20px; font-size: 1em; border-radius: 25px;
-      color: white; border: none; cursor: pointer; max-width: 250px;
-      transition: background 0.3s ease;
-    }
+    .music-btn, .try-again-btn, .share-btn { background-color: #f06292; margin: 10px auto; display: block; padding: 10px 20px; font-size: 1em; border-radius: 25px; color: white; border: none; cursor: pointer; max-width: 250px; transition: background 0.3s ease; }
     .music-btn:hover, .try-again-btn:hover, .share-btn:hover { background-color: #d81b60; }
-    @media (max-width: 400px) {
-      h1 { font-size: 2em; }
-      #result { font-size: 1.3em; }
-      .celebration { font-size: 1.7em; }
-    }
+    @media (max-width: 400px) { h1 { font-size: 2em; } #result { font-size: 1.3em; } .celebration { font-size: 1.7em; } }
   </style>
 </head>
 
@@ -88,7 +49,15 @@
     <source src="https://cdn.pixabay.com/audio/2022/06/20/audio_24b250dc49.mp3" type="audio/mpeg" />
   </audio>
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
+    // Supabase setup
+    const SUPABASE_URL = "https://zarjaecjbyucnqzseovw.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InphcmphZWNqYnl1Y25xenNlb3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4NDQ0MTIsImV4cCI6MjA3MDQyMDQxMn0.yf8s-0KXGawn8-Mnxbax-b4G6g0dqEdcxtIglfMJKXI";
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
     function normalizeName(name) {
       return name.trim().toLowerCase().replace(/\s+/g, ' ');
     }
@@ -112,7 +81,7 @@
       ["aashikk", "appu"]
     ];
 
-    function calculateLove() {
+    async function calculateLove() {
       const boyRaw = document.getElementById("boyName").value;
       const girlRaw = document.getElementById("girlName").value;
       const boy = normalizeName(boyRaw);
@@ -126,7 +95,6 @@
         return;
       }
 
-      // Check if special couple in both orders
       const isSpecialCouple = specialCouples.some(([b, g]) =>
         (normalizeName(b) === boy && normalizeName(g) === girl) ||
         (normalizeName(b) === girl && normalizeName(g) === boy)
@@ -142,6 +110,18 @@
       }
 
       controlsDiv.style.display = "block";
+
+      // Save to Supabase
+      try {
+        const { data, error } = await supabaseClient
+          .from("love_results")
+          .insert([{ his_name: boyRaw, her_name: girlRaw, percentage: percent }]);
+
+        if (error) console.error("Error saving to Supabase:", error);
+        else console.log("Saved to Supabase:", data);
+      } catch (err) {
+        console.error("Unexpected error:", err);
+      }
     }
 
     function calculateNameSimilarityPercent(name1, name2) {
@@ -150,8 +130,8 @@
       for (let char of shorter) {
         if (name2.includes(char)) matches++;
       }
-      let percent = Math.floor((matches / shorter.length) * 50) + 50; // 50-100%
-      if (percent > 99) percent = 99; // avoid 100 unless special
+      let percent = Math.floor((matches / shorter.length) * 50) + 50;
+      if (percent > 99) percent = 99;
       return percent;
     }
 
