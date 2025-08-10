@@ -2,36 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Love Calculator 💘</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(to right, #ff9a9e, #fad0c4);
       text-align: center;
-      padding: 50px;
+      padding: 5vh 5vw;
+      box-sizing: border-box;
     }
 
     h1 {
       color: #e91e63;
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1em;
+      margin-bottom: 2vh;
     }
 
     input {
       padding: 10px;
-      width: 250px;
-      margin: 10px;
+      width: 90%;
+      max-width: 300px;
+      margin: 10px auto;
       border-radius: 5px;
       border: 1px solid #ccc;
       font-size: 1em;
+      display: block;
+      box-sizing: border-box;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 12px 20px;
       font-size: 1em;
       background: #e91e63;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      width: 90%;
+      max-width: 320px;
+      margin-top: 10px;
     }
 
     button:hover {
@@ -40,12 +54,13 @@
 
     #result {
       margin-top: 30px;
-      font-size: 1.5em;
+      font-size: 1.4em;
       font-weight: bold;
+      padding: 10px;
     }
 
     .celebration {
-      font-size: 2em;
+      font-size: 1.8em;
       color: #d50000;
       animation: pop 0.5s ease-in-out;
     }
@@ -54,6 +69,21 @@
       0% { transform: scale(0.5); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
+
+    /* Media Query for smaller phones */
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      .celebration {
+        font-size: 1.5em;
+      }
+
+      #result {
+        font-size: 1.2em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -61,8 +91,8 @@
   <h1>💘 Love Calculator 💘</h1>
   <p>Enter names to see your love percentage!</p>
 
-  <input type="text" id="boyName" placeholder="His Name 💙"><br>
-  <input type="text" id="girlName" placeholder="Her Name 💖"><br>
+  <input type="text" id="boyName" placeholder="His Name 💙">
+  <input type="text" id="girlName" placeholder="Her Name 💖">
   <button onclick="calculateLove()">Calculate Love</button>
 
   <div id="result"></div>
