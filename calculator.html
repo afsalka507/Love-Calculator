@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Calculator 💘</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #e91e63;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #d81b60;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .celebration {
+      font-size: 2em;
+      color: #d50000;
+      animation: pop 0.5s ease-in-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💘 Love Calculator 💘</h1>
+  <p>Enter names to see your love percentage!</p>
+
+  <input type="text" id="boyName" placeholder="His Name 💙"><br>
+  <input type="text" id="girlName" placeholder="Her Name 💖"><br>
+  <button onclick="calculateLove()">Calculate Love</button>
+
+  <div id="result"></div>
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    function calculateLove() {
+      const boy = document.getElementById("boyName").value.trim().toLowerCase();
+      const girl = document.getElementById("girlName").value.trim().toLowerCase();
+      const resultDiv = document.getElementById("result");
+
+      if (!boy || !girl) {
+        resultDiv.innerHTML = "Please enter both names!";
+        return;
+      }
+
+      const isSpecialCouple = (
+        (boy === "muhammed thaha" && girl === "blessy maria") ||
+        (boy === "haseeb" && girl === "blessy maria") ||
+        (boy === "shan muhammed" && girl === "misrya sherin")
+      );
+
+      const total = (boy + girl).split('').reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+      const percent = 50 + (total % 51); // 50–100%
+
+      if (percent === 100 || isSpecialCouple) {
+        triggerCelebration();
+        resultDiv.innerHTML = `<div class="celebration">🎉 Adi Pookutti! ❤️ 100% Match!<br>💍 Happy Married Life!</div>`;
+      } else {
+        resultDiv.innerHTML = `❤️ Love Match: ${percent}%`;
+      }
+    }
+
+    function triggerCelebration() {
+      let duration = 3000;
+      let end = Date.now() + duration;
+
+      (function frame() {
+        confetti({ angle: 60, spread: 55, origin: { x: 0 } });
+        confetti({ angle: 120, spread: 55, origin: { x: 1 } });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    }
+  </script>
+
+</body>
+</html>
