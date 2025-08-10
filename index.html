@@ -4,17 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Love Calculator 💘</title>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to right, #ffc1cc, #ffe4e1);
@@ -23,157 +15,64 @@
       color: #880e4f;
       overflow-x: hidden;
     }
-
-    h1 {
-      font-size: 2.5em;
-      color: #ad1457;
-      margin-bottom: 10px;
-      text-shadow: 1px 1px 2px #fff;
-    }
-
-    p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-      color: #6a1b9a;
-    }
-
+    h1 { font-size: 2.5em; color: #ad1457; margin-bottom: 10px; text-shadow: 1px 1px 2px #fff; }
+    p { font-size: 1.2em; margin-bottom: 30px; color: #6a1b9a; }
     input {
-      padding: 15px;
-      width: 90%;
-      max-width: 320px;
-      margin: 12px auto;
-      border-radius: 30px;
-      border: 1px solid #f48fb1;
-      font-size: 1em;
-      outline: none;
-      background-color: #fff0f5;
-      box-shadow: inset 0 0 5px #f8bbd0;
+      padding: 15px; width: 90%; max-width: 320px; margin: 12px auto;
+      border-radius: 30px; border: 1px solid #f48fb1; font-size: 1em;
+      outline: none; background-color: #fff0f5; box-shadow: inset 0 0 5px #f8bbd0;
       display: block;
     }
-
-    input:focus {
-      border-color: #ec407a;
-      box-shadow: 0 0 8px #f06292;
-    }
-
+    input:focus { border-color: #ec407a; box-shadow: 0 0 8px #f06292; }
     button {
-      padding: 14px 30px;
-      font-size: 1.1em;
-      background: #ec407a;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      width: 90%;
-      max-width: 340px;
-      margin-top: 20px;
-      transition: background 0.3s ease;
+      padding: 14px 30px; font-size: 1.1em; background: #ec407a; color: white;
+      border: none; border-radius: 30px; cursor: pointer; width: 90%; max-width: 340px;
+      margin-top: 20px; transition: background 0.3s ease;
       box-shadow: 0 4px 10px rgba(236, 64, 122, 0.4);
     }
-
-    button:hover {
-      background: #d81b60;
-    }
-
+    button:hover { background: #d81b60; }
     #result {
-      margin-top: 30px;
-      font-size: 1.6em;
-      font-weight: bold;
-      color: #880e4f;
-      min-height: 60px;
-      padding: 10px;
+      margin-top: 30px; font-size: 1.6em; font-weight: bold; color: #880e4f;
+      min-height: 60px; padding: 10px;
     }
-
     .celebration {
-      font-size: 2em;
-      color: #c2185b;
-      animation: pop 0.5s ease-in-out;
+      font-size: 2em; color: #c2185b; animation: pop 0.5s ease-in-out;
       text-shadow: 2px 2px 5px #ff80ab;
     }
-
-    @keyframes pop {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
+    @keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
     #hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      position: fixed; top: 0; left: 0; pointer-events: none; width: 100%; height: 100%; z-index: -1;
     }
-
     .heart {
-      position: absolute;
-      color: #ff6f91;
-      animation: float 6s linear infinite;
-      font-size: 20px;
-      opacity: 0.6;
-      user-select: none;
-      pointer-events: none;
+      position: absolute; color: #ff6f91; animation: float 6s linear infinite;
+      font-size: 20px; opacity: 0.6; user-select: none; pointer-events: none;
     }
-
     @keyframes float {
-      0% {
-        transform: translateY(100vh) scale(1);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.5);
-        opacity: 1;
-      }
+      0% { transform: translateY(100vh) scale(1); opacity: 0; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 1; }
     }
-
-    #controls {
-      margin-top: 20px;
-    }
-
+    #controls { margin-top: 20px; }
     .music-btn, .try-again-btn, .share-btn {
-      background-color: #f06292;
-      margin: 10px auto;
-      display: block;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 25px;
-      color: white;
-      border: none;
-      cursor: pointer;
-      max-width: 250px;
+      background-color: #f06292; margin: 10px auto; display: block;
+      padding: 10px 20px; font-size: 1em; border-radius: 25px;
+      color: white; border: none; cursor: pointer; max-width: 250px;
       transition: background 0.3s ease;
     }
-
-    .music-btn:hover, .try-again-btn:hover, .share-btn:hover {
-      background-color: #d81b60;
-    }
-
+    .music-btn:hover, .try-again-btn:hover, .share-btn:hover { background-color: #d81b60; }
     @media (max-width: 400px) {
-      h1 {
-        font-size: 2em;
-      }
-
-      #result {
-        font-size: 1.3em;
-      }
-
-      .celebration {
-        font-size: 1.7em;
-      }
+      h1 { font-size: 2em; }
+      #result { font-size: 1.3em; }
+      .celebration { font-size: 1.7em; }
     }
   </style>
 </head>
 
 <body>
-
   <h1>💘 Love Calculator 💘</h1>
   <p>Enter names to see your love percentage!</p>
-
   <input type="text" id="boyName" placeholder="His Name 💙" autocomplete="off" />
   <input type="text" id="girlName" placeholder="Her Name 💖" autocomplete="off" />
   <button onclick="calculateLove()">Calculate Love</button>
-
   <div id="result"></div>
 
   <div id="controls" style="display:none;">
@@ -182,13 +81,9 @@
     <button class="share-btn" onclick="shareResult()">📲 Share on WhatsApp</button>
   </div>
 
-  <!-- Floating Hearts -->
   <div id="hearts"></div>
-
-  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- Background Music -->
   <audio id="bgMusic" loop>
     <source src="https://cdn.pixabay.com/audio/2022/06/20/audio_24b250dc49.mp3" type="audio/mpeg" />
   </audio>
@@ -206,22 +101,15 @@
       ["ashique", "aparna jitheash"],
       ["ashique", "aparna j nair"],
       ["fasalu rahman", "blessy maria"],
-
-      // Every combination of Amar & Aparna (both full and swapped)
       ["amar ashique", "aparna j nair"],
-      ["aparna j nair", "amar ashique"],
       ["amar ashique", "aparna jitheash"],
-      ["aparna jitheash", "amar ashique"],
-       ["shan muhammed", "misriya sherin"],
+      ["shan", "misriya"],
+      ["shan muhammed", "misriya"],
       ["shan", "misriya sherin"],
-    ["shan", "misriya"],
-    ["shan muhammed", "misri"],
-["shan muhammed", "misriya"],
-    ["shan", "misri"],
-["icha", "michi"],
+      ["shan", "misri"],
+      ["icha", "michi"],
       ["aashik", "appu"],
-      ["aashikk", "appu"],
-      
+      ["aashikk", "appu"]
     ];
 
     function calculateLove() {
@@ -238,17 +126,13 @@
         return;
       }
 
+      // Check if special couple in both orders
       const isSpecialCouple = specialCouples.some(([b, g]) =>
-        normalizeName(b) === boy && normalizeName(g) === girl
+        (normalizeName(b) === boy && normalizeName(g) === girl) ||
+        (normalizeName(b) === girl && normalizeName(g) === boy)
       );
 
-      let percent = 0;
-
-      if (isSpecialCouple) {
-        percent = 100;
-      } else {
-        percent = calculateNameSimilarityPercent(boy, girl);
-      }
+      let percent = isSpecialCouple ? 100 : calculateNameSimilarityPercent(boy, girl);
 
       if (percent === 100) {
         triggerCelebration();
@@ -261,98 +145,64 @@
     }
 
     function calculateNameSimilarityPercent(name1, name2) {
-      const chars1 = name1.replace(/\s+/g, '').split('');
-      const chars2 = name2.replace(/\s+/g, '').split('');
-      const set1 = new Set(chars1);
-      const set2 = new Set(chars2);
-
-      let matchCount = 0;
-      set1.forEach(char => {
-        if (set2.has(char)) matchCount++;
-      });
-
-      const maxLen = Math.max(set1.size, set2.size);
-      const rawPercent = maxLen > 0 ? (matchCount / maxLen) * 100 : 0;
-
-      // Result between 50% and 100%
-      return Math.floor(50 + (rawPercent / 2));
+      let matches = 0;
+      const shorter = name1.length < name2.length ? name1 : name2;
+      for (let char of shorter) {
+        if (name2.includes(char)) matches++;
+      }
+      let percent = Math.floor((matches / shorter.length) * 50) + 50; // 50-100%
+      if (percent > 99) percent = 99; // avoid 100 unless special
+      return percent;
     }
 
     function triggerCelebration() {
       let duration = 3000;
       let end = Date.now() + duration;
-
       (function frame() {
         confetti({ angle: 60, spread: 55, origin: { x: 0 } });
         confetti({ angle: 120, spread: 55, origin: { x: 1 } });
-
-        if (Date.now() < end) {
-          requestAnimationFrame(frame);
-        }
+        if (Date.now() < end) requestAnimationFrame(frame);
       })();
     }
 
-    // Floating Hearts Animation
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.innerHTML = '❤️';
-
-      // Random position along the width
       heart.style.left = Math.random() * 100 + 'vw';
-      // Random animation duration and delay
       heart.style.animationDuration = (4 + Math.random() * 3) + 's';
       heart.style.fontSize = (12 + Math.random() * 20) + 'px';
-
       document.getElementById('hearts').appendChild(heart);
-
-      // Remove the heart after animation
-      setTimeout(() => {
-        heart.remove();
-      }, 7000);
+      setTimeout(() => heart.remove(), 7000);
     }
-
     setInterval(createHeart, 500);
 
-    // Music Controls
     const bgMusic = document.getElementById('bgMusic');
     let musicPlaying = false;
-
     function toggleMusic() {
-      if (musicPlaying) {
-        bgMusic.pause();
-      } else {
-        bgMusic.play();
-      }
+      if (musicPlaying) bgMusic.pause(); else bgMusic.play();
       musicPlaying = !musicPlaying;
     }
 
-    // Reset form and result
     function resetForm() {
       document.getElementById("boyName").value = '';
       document.getElementById("girlName").value = '';
       document.getElementById("result").innerHTML = '';
       document.getElementById("controls").style.display = "none";
-      if(musicPlaying) toggleMusic();
+      if (musicPlaying) toggleMusic();
     }
 
-    // Share result via WhatsApp
     function shareResult() {
       const boy = document.getElementById("boyName").value.trim();
       const girl = document.getElementById("girlName").value.trim();
       const result = document.getElementById("result").innerText;
-
       if (!boy || !girl || !result) {
         alert("Please calculate a love match first!");
         return;
       }
-
       const text = encodeURIComponent(`Love Calculator Result ❤️\n${boy} & ${girl}\n${result}\nTry your love now!`);
-      const whatsappUrl = `https://wa.me/?text=${text}`;
-
-      window.open(whatsappUrl, '_blank');
+      window.open(`https://wa.me/?text=${text}`, '_blank');
     }
   </script>
-
 </body>
 </html>
